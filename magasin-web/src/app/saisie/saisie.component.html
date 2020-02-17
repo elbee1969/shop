@@ -1,0 +1,24 @@
+<h3>Saisie</h3>
+
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
+  <div>
+    <label for="caisses">
+      Nombre de Caisses
+    </label>
+    <input id="caisses" type="text" formControlName="caisses">
+  </div>
+
+  <div>
+    <label for="clients">
+      Nombre de clients
+    </label>
+    <input id="clients" type="text" formControlName="clients">
+  </div>
+
+  <button class="button" type="submit">Envoi au back</button>
+
+</form>
+
+
