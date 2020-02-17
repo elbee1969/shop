@@ -49,8 +49,8 @@ export class SaisieComponent implements OnInit {
       console.log(' tab article '+this.articles);
 
       let payloads = {
-        'capacityOfCashRegister': this.capacity,
-        'numberOfArticles': this.articles
+        'cashRegisterVelocity': this.capacity,
+        'itemsByClient': this.articles
       }
 
       console.log ('caisses : '+ nbrCashRegisters, 'Clients : '+ nbrClients);
