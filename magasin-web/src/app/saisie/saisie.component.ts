@@ -47,9 +47,17 @@ export class SaisieComponent implements OnInit {
       console.log(nbrCashRegisters);
       console.log(' tab capacity '+this.capacity);
       console.log(' tab article '+this.articles);
+
+      let payloads = {
+        'capacityOfCashRegister': this.capacity,
+        'numberOfArticles': this.articles
+      }
+
       console.log ('caisses : '+ nbrCashRegisters, 'Clients : '+ nbrClients);
         console.log(this.checkoutForm.value)
-      this.http.post<object>('http://localhost:9000/shop', this.checkoutForm.value)
+console.log('payloads : ' + payloads);
+
+      this.http.post<object>('http://localhost:9000/shop', payloads)
     }
 
     alea(max: number) {
