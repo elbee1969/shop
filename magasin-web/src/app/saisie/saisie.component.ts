@@ -28,7 +28,8 @@ export class SaisieComponent implements OnInit {
   }
 
   onSubmit() {
-
+    this.articles = [];
+    this.capacity = [];
     let nbrCashRegisters = this.checkoutForm.value.caisses;
     let nbrClients = this.checkoutForm.value.clients;
 
@@ -46,9 +47,6 @@ export class SaisieComponent implements OnInit {
     }
     console.log(payloads);
     this.http.post<object>('http://localhost:9000/shop', payloads, { headers: new HttpHeaders().set('Content-Type', 'application/json')}).subscribe();
-    //TODO: fix array doesn't empty.
-    payloads.cashRegisterVelocity=null;
-    payloads.itemsByClient=null;
     console.log(payloads);
   }
 
