@@ -25,7 +25,6 @@ export class SaisieComponent implements OnInit {
 
   ngOnInit() {
 
-
   }
 
   onSubmit() {
@@ -40,16 +39,17 @@ export class SaisieComponent implements OnInit {
     for (let i = 0; i < nbrClients; i++) {
       this.articles.push(Math.floor(Math.random() * Math.floor(39) + 1));
     }
-    
-    console.log(' tab capacity ' + this.capacity);
-    console.log(' tab article ' + this.articles);
 
     let payloads = {
       'cashRegisterVelocity': this.capacity,
       'itemsByClient': this.articles
     }
-
+    console.log(payloads);
     this.http.post<object>('http://localhost:9000/shop', payloads, { headers: new HttpHeaders().set('Content-Type', 'application/json')}).subscribe();
+    //TODO: fix array doesn't empty.
+    payloads.cashRegisterVelocity=null;
+    payloads.itemsByClient=null;
+    console.log(payloads);
   }
 
 }
