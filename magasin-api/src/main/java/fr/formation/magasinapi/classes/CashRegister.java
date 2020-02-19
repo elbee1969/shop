@@ -8,11 +8,14 @@ public class CashRegister {
 
     int velocity;
 
-    int[] queue;
+    float saturation;
 
-    public CashRegister(int number, int velocity, int[] queue) {
+    Client[] queue;
+
+    public CashRegister(int number, int velocity, float saturation, Client[] queue) {
 	this.number = number;
 	this.velocity = velocity;
+	this.saturation = saturation;
 	this.queue = queue;
     }
 
@@ -32,17 +35,25 @@ public class CashRegister {
 	this.velocity = velocity;
     }
 
-    public int[] getQueue() {
+    public float getSaturation() {
+	return saturation;
+    }
+
+    public void setSaturation(float saturation) {
+	this.saturation = saturation;
+    }
+
+    public Client[] getQueue() {
 	return queue;
     }
 
-    public void setQueue(int[] queue) {
+    public void setQueue(Client[] queue) {
 	this.queue = queue;
     }
 
     @Override
     public String toString() {
-	return "[Caisse numero: " + number + ", velocity: " + velocity
-		+ ", line: " + Arrays.toString(queue) + "]";
+	return "\n[Caisse numero: " + number + ", velocity: " + velocity + ", saturation: "
+		+ saturation + ", line: " + Arrays.toString(queue) + "]";
     }
 }
