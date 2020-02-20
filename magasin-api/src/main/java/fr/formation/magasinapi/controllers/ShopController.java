@@ -20,19 +20,24 @@ public class ShopController {
 
     @PostMapping
     public void userInput(@Valid @RequestBody Shop shop) {
-	int[] items = shop.getItemsByClient();
-	Client[] clients = new Client[items.length];
-	for (int i = 0; i < items.length; i++) {
-	    clients[i] = createClients(items[i]);
-	}
-	// System.out.println(Arrays.toString(clients));
+	int[] itemsArr = shop.getItemsByClient();
 	int[] velocityArr = shop.getCashRegisterVelocity();
+	/*
+	 * Creating clients
+	 */
+	Client[] clients = new Client[itemsArr.length];
+	for (int i = 0; i < itemsArr.length; i++) {
+	    clients[i] = createClients(itemsArr[i]);
+	}
+	/*
+	 * Creating cash registers with a queue size equal to the total number of
+	 * customers
+	 */
 	CashRegister[] cashRegisters = new CashRegister[velocityArr.length];
 	for (int i = 0; i < velocityArr.length; i++) {
 	    Client[] queue = new Client[clients.length];
 	    cashRegisters[i] = createCashRegister(i + 1, velocityArr[i], 0, queue);
 	}
-	// System.out.println(Arrays.toString(cashRegisters));
 	Utils.dispatch(clients, cashRegisters);
     }
 
