@@ -29,8 +29,7 @@ public class ShopController {
 	int[] velocityArr = shop.getCashRegisterVelocity();
 	CashRegister[] cashRegisters = new CashRegister[velocityArr.length];
 	for (int i = 0; i < velocityArr.length; i++) {
-	    Client[] queue = new Client[clients.length];
-	    cashRegisters[i] = createCashRegister(i + 1, velocityArr[i], 0, queue);
+	    cashRegisters[i] = createCashRegister(i + 1, velocityArr[i], 0, new Client[0]);
 	}
 	// System.out.println(Arrays.toString(cashRegisters));
 	Utils.dispatch(clients, cashRegisters);
